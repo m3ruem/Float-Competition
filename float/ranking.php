@@ -6,6 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JUDGING SHEET</title>
     <link rel="stylesheet" href="/float/css/float.css">
+    <style>
+        .top10 {
+            background-color: blue;
+            color: black;
+        }
+        .judge-signatures {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+        }
+        .judge-signature {
+            text-align: center;
+            width: 45%;
+        }
+        .judge-signature .line {
+            border-bottom: 1px solid black;
+            margin-bottom: 5px;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,24 +58,35 @@
                 </tr>
             </thead>
             <tbody>
-                <?php
+            <?php
                 include 'fetch_scores.php';
 
                 foreach ($scores as $score) {
-                    echo "<tr>";
-                    echo "<td>{$score['entry_num']}</td>";
-                    echo "<td>{$score['overall_appearance']}</td>";
-                    echo "<td>{$score['artistry_design']}</td>";
-                    echo "<td>{$score['craftsmanship']}</td>";
-                    echo "<td>{$score['relevance_theme']}</td>";
-                    echo "<td>{$score['total']}</td>";
-                    echo "<td>{$score['ranking']}</td>";
+                    $class = $score['ranking'] <= 10 ? 'top10' : '';
+                    echo "<tr class='{$class}'>";
+                    echo "<td>" . htmlspecialchars($score['entry_num']) . "</td>";
+                    echo "<td>" . htmlspecialchars($score['avg_oa']) . "</td>";
+                    echo "<td>" . htmlspecialchars($score['avg_ad']) . "</td>";
+                    echo "<td>" . htmlspecialchars($score['avg_cr']) . "</td>";
+                    echo "<td>" . htmlspecialchars($score['avg_rt']) . "</td>";
+                    echo "<td>" . htmlspecialchars($score['avg_total']) . "</td>";
+                    echo "<td>" . htmlspecialchars($score['ranking']) . "</td>";
                     echo "</tr>";
                 }
                 ?>
             </tbody>
         </table>
+        <div class="judge-signatures">
+            <?php foreach ($judges as $judge) : ?>
+                <div class="judge-signature">
+                    <div class="line"></div>
+                    <p><?php echo htmlspecialchars($judge); ?></p>
+                    <p>judge</p>
+                </div>
+            <?php endforeach; ?>
+        </div>
     </div>
+    
 </body>
 
 </html>

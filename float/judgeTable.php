@@ -1,12 +1,28 @@
-<?php include('include/navigation.php') ?>
 <?php
-if (!isset($_SESSION['username'])) {
+include ('include/navigation.php');
+require('../db/db_connection.php');
+
+if (!isset($_SESSION['user_id'])) {
     $_SESSION['error_message'] = "You must be logged in to access this page.";
-    header("Location: index.php");
+    header("Location: ../index.php");
     exit;
 }
 
-require('../db/db_connection.php');
+$user_query = "SELECT role, name FROM user WHERE id = ?";
+$stmt = $conn->prepare($user_query);
+if ($stmt === false) {
+    die('Prepare failed: ' . htmlspecialchars($conn->error));
+}
+$stmt->bind_param("i", $_SESSION['user_id']);
+$stmt->execute();
+$stmt->bind_result($role, $judge_name);
+$stmt->fetch();
+$stmt->close();
+
+if ($role != 1) {
+    $_SESSION['error_message'] = "You do not have permission to score.";
+    exit;
+}
 
 if (!isset($_GET['entry_num'])) {
     echo "No contestant selected.";
@@ -15,18 +31,27 @@ if (!isset($_GET['entry_num'])) {
 
 $entry_num = $_GET['entry_num'];
 
-// Fetch the current judge's name
-$user_query = "SELECT name FROM user WHERE id = ?";
-$stmt = $conn->prepare($user_query);
+$checkJudgeScoreSql = "SELECT * FROM scores WHERE entry_num = ? AND judge_name = ?";
+$stmt = $conn->prepare($checkJudgeScoreSql);
 if ($stmt === false) {
     die('Prepare failed: ' . htmlspecialchars($conn->error));
 }
-$stmt->bind_param("i", $_SESSION['user_id']);
+$stmt->bind_param("is", $entry_num, $judge_name);
 $stmt->execute();
-$stmt->bind_result($judge_name);
-$stmt->fetch();
-$stmt->close();
+$stmt->store_result();
 
+if ($stmt->num_rows > 0) {
+    echo "<script>
+            window.onload = function() {
+                alert('You have already scored this contestant.');
+                window.location.href = 'judgeTable.php';
+            };
+          </script>";
+    $stmt->close();
+    exit;
+}
+
+$stmt->close();
 ?>
 
 <!DOCTYPE html>
@@ -40,7 +65,7 @@ $stmt->close();
 <body>
     <div class="container">
         <h1>CIVIC PARADE: FLOAT COMPETITION</h1>
-        <h1>Welcome, <?php echo htmlspecialchars($_SESSION['username']); ?></h1>
+        <h1>Welcome, <?php echo htmlspecialchars($judge_name); ?></h1>
         <form action="submit_scores.php" method="post" onsubmit="return confirmSubmission()">
             <input type="hidden" id="entry_num" name="entry_num" value="<?php echo htmlspecialchars($entry_num); ?>">
             <div class="form-group">
@@ -72,6 +97,5 @@ $stmt->close();
         }
     </script>
     <script src="../float/js/judgeTable.js"></script>
-
 </body>
 </html>
