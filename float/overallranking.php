@@ -65,7 +65,7 @@
             </thead>
             <tbody>
                 <?php
-                include 'fetch_festive.php';
+                include 'fetch_scores.php';
                 foreach ($scores as $score) {
                     $class = $score['ranking'] <= 10 ? 'top10' : '';
                     echo "<tr class='{$class}'>";
