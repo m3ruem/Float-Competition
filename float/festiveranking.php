@@ -85,7 +85,7 @@
 
     </div>
     <div class="twobuttons" style="margin-bottom:80vh;">
-        <a href="/float/overallranking.php"><button class="button" style="margin-bottom:10%;"><strong>Overall Results</strong></button></a>
+        <a href="/float/overallfestive.php"><button class="button" style="margin-bottom:10%;"><strong>Overall Results</strong></button></a>
 
         <!-- <button class="button button5">BACK</button> -->
     </div>
@@ -94,7 +94,7 @@
     </div>
 
     <div class="container">
-        <h1>FLOAT COMPETITION</h1>
+        <h1>FESTIVE COMPETITION</h1>
         <h1>JUDGING SHEET</h1>
         <!-- <table>
             <thead>
@@ -123,9 +123,8 @@
                     $class = $score['ranking'] <= 10 ? 'top10' : '';
                     echo "<tr class='{$class}'>";
                     echo "<td>" . htmlspecialchars($score['entry_num']) . "</td>";
-                    echo "<td>" . htmlspecialchars($score['avg_oa']) . "</td>";
-                    echo "<td>" . htmlspecialchars($score['avg_ad']) . "</td>";
-                    echo "<td>" . htmlspecialchars($score['avg_cr']) . "</td>";
+                    echo "<td>" . htmlspecialchars($score['avg_fsp']) . "</td>";
+                    echo "<td>" . htmlspecialchars($score['avg_cap']) . "</td>";
                     echo "<td>" . htmlspecialchars($score['avg_rt']) . "</td>";
                     echo "<td>" . htmlspecialchars($score['avg_total']) . "</td>";
                     echo "<td>" . htmlspecialchars($score['ranking']) . "</td>";
@@ -138,7 +137,7 @@
             <?php $judgeCount = 1;
             foreach ($judges as $judge) : ?>
                 <div class="judge-signature" style="font-family:Kanit, sans-serif; text-decoration:none">
-                    <a href="/float/indivscores.php?judge=<?php echo $judge; ?>" class="no-underline">
+                    <a href="/float/indivfestive.php?judge=<?php echo $judge; ?>" class="no-underline">
                         <img src="/images/tnalakfest.png" style="height:auto; width:70%" alt="">
                         <p style="font-size:100%"><?php echo htmlspecialchars($judge); ?></p>
                     </a>

@@ -1,13 +1,12 @@
 
 <?php
-require('../db/db_connection.php');
+require('../db/db_festiveconn.php');
 
 $sql = "SELECT entry_num, 
-               AVG(overall_appearance) AS avg_oa, 
-               AVG(artistry_design) AS avg_ad, 
-               AVG(craftsmanship) AS avg_cr, 
-               AVG(relevance_theme) AS avg_rt,
-               (AVG(overall_appearance) + AVG(artistry_design) + AVG(craftsmanship) + AVG(relevance_theme)) AS avg_total 
+               AVG(festive_spirit_of_parade) AS avg_fsp, 
+               AVG(costume_and_props) AS avg_cap, 
+               AVG(relevance_to_theme) AS avg_rt, 
+               (AVG(festive_spirit_of_parade) + AVG(costume_and_props) + AVG(relevance_to_theme)) AS avg_total 
         FROM scores 
         GROUP BY entry_num 
         ORDER BY avg_total DESC";

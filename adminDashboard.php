@@ -14,8 +14,8 @@
     <div class="container">
         <h1>Admin Dashboard</h1>
         <div class="buttons">
-            <a href="/float/float.php" class="button">Float</a>
-            <a href="/festive/festive.php" class="button">Festive</a>
+            <a href="/float/ranking.php" class="button">Float</a>
+            <a href="/float/festiveranking.php" class="button">Festive</a>
         </div>
         <div class="backvid">
         <video autoplay loop muted>
