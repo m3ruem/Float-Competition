@@ -84,7 +84,7 @@
         <img src="../tnalak.png" alt="t'nalak image">
 
     </div>
-    <div class="twobuttons" style="margin-bottom:80vh;">
+    <div class="twobuttons" style="margin-bottom:83vh; margin-top:0vh">
         <a href="/float/overallranking.php"><button class="button" style="margin-bottom:10%;"><strong>Overall Results</strong></button></a>
 
         <!-- <button class="button button5">BACK</button> -->
@@ -93,7 +93,7 @@
         <img src="../emblem.png" alt="t'nalak image">
     </div>
 
-    <div class="container">
+    <div class="container_ranking">
         <h1>FLOAT COMPETITION</h1>
         <h1>JUDGING SHEET</h1>
         <!-- <table>

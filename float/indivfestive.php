@@ -44,9 +44,6 @@
         $judge = isset($_GET['judge']) ? htmlspecialchars($_GET['judge']) : '';
 
         // Display judge's scores or perform necessary operations
-        
-        echo "<h2>Score Sheet of Judge $judge </h2>";
-        
         // Include database connection
         require('../db/db_festiveconn.php');
 
@@ -80,10 +77,12 @@
             
         }
         echo "</tbody></table>";
+        echo "<h2><u>$judge</u></h2>";
         // Close statement and connection
         $stmt->close();
         $conn->close();
         ?>
+        <h3>Judge</h3>
     </div>
 </body>
 

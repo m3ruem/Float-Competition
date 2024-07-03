@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JUDGING SHEET</title>
-    <link rel="stylesheet" href="/float/css/float.css">
+    <link rel="stylesheet" href="/float/css/float.css?v=1.0">
     <style>
         .top10 {
             background-color: blue;
@@ -37,7 +37,7 @@
     <div class="emblem">
         <img src="../emblem.png" alt="t'nalak image">
     </div>
-
+    
     <div class="container">
         <?php
         // Retrieve judge name from query string
@@ -45,7 +45,7 @@
 
         // Display judge's scores or perform necessary operations
         
-        echo "<h2>Score Sheet of Judge $judge </h2>";
+        
         
         // Include database connection
         require('../db/db_connection.php');
@@ -79,10 +79,14 @@
             
         }
         echo "</tbody></table>";
+        echo "<h2><u>$judge</u></h2>";
+        
         // Close statement and connection
         $stmt->close();
         $conn->close();
         ?>
+        <h3>Judge</h3>
+        
     </div>
 </body>
 
