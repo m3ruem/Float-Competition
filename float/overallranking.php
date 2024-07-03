@@ -57,7 +57,7 @@
                         <p>(This pertains to how the design is realized and how the float is made. Such factors to be considered are the quality of the craftsmanship, stability of structure and decoration, choice, and creative use of materials)</p>
                     </th>
                     <th>Relevance to the Festive Theme (20%)
-                        <p>"Onward South Cotabato: Dreaming Big, Weaving more progress. Rising above challenges"</p>
+                        <p>("Onward South Cotabato: Dreaming Big, Weaving more progress. Rising above challenges")</p>
                     </th>
                     <th>Total</th>
                     <th>Ranking</th>

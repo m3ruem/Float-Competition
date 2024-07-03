@@ -79,7 +79,6 @@
 </head>
 
 <body>
-
     <div class="tnalaklogo">
         <img src="../tnalak.png" alt="t'nalak image">
 
@@ -141,7 +140,7 @@
                         <img src="/images/tnalakfest.png" style="height:auto; width:70%" alt="">
                         <p style="font-size:100%"><?php echo htmlspecialchars($judge); ?></p>
                     </a>
-                    <p style="font-size:20px">judge <?php echo $judgeCount; ?></p>
+                    <p style="font-size:20px">Judge <?php echo $judgeCount; ?></p>
                 </div>
             <?php $judgeCount++;
             endforeach; ?>

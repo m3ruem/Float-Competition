@@ -60,7 +60,7 @@
         $stmt->bind_result($entry_num, $festive_spirit_of_parade, $costume_and_props, $relevance_to_theme);
 
         echo "<table>";
-        echo "<thead><tr><th>Entry No.</th><th>Festive Spirit of Parade</th><th>Costume and Props</th><th>Relevance to Theme</th><th>Total</th></tr></thead>";
+        echo "<thead><tr><th>Entry No.</th><th>Festive Spirit Of Parade Participants (50%) <p>(Festive-feel, Festive-look, Festivity, Color, Use of Liveners, Enthusiasm)</p> </th><th>Costume and Props (30%) <p>(Creativity & Uniqueness)</p> </th><th>Relevance to the Theme (20%) <p>(Theme: Onward South Cotabato: Dreaming Big, Weaving more progress. Rising above challenges)</p> </th><th>Total</th></tr></thead>";
         echo "<tbody>";
 
     
